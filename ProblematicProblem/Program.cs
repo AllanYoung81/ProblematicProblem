@@ -13,7 +13,8 @@ namespace ProblematicProblem
         static void Main(string[] args)
         {
             Random rng = new Random();
-            Console.Write("Hello, welcome to the random activity generator! \nWould you like to generate a random activity? yes/no: ");
+            Console.Write("Hello, welcome to the random activity generator! \n" +
+                "Would you like to generate a random activity? yes/no: ");
 
             bool cont = (Console.ReadLine().ToLower() == "yes") ? true : false;
 
@@ -28,8 +29,23 @@ namespace ProblematicProblem
             Console.Write("We are going to need your information first! What is your name? ");
             string userName = Console.ReadLine();
             Console.WriteLine();
-            Console.Write("What is your age? ");
-            int userAge = int.Parse(Console.ReadLine());
+
+
+            bool doContinue = true;
+            int userAge = 0;
+            while (doContinue)
+            {
+                try
+                {
+                    Console.Write("What is your age? ");
+                    userAge = int.Parse(Console.ReadLine());
+                    doContinue = false;
+                }
+                catch
+                {
+                    Console.WriteLine("Sorry, invalid entry.");
+                }
+            }
             Console.WriteLine();
             Console.Write("Would you like to see the current list of activities? Sure/No thanks: ");
             bool seeList = (Console.ReadLine().ToLower() == "sure") ? true : false;
